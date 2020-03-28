@@ -2,13 +2,13 @@ package com.paolovalerdi.chameleon.utils
 
 import android.content.res.ColorStateList
 import android.graphics.Color
+import android.widget.SeekBar
 import androidx.annotation.ColorInt
 import androidx.annotation.FloatRange
-import androidx.appcompat.widget.AppCompatSeekBar
+import androidx.appcompat.widget.SwitchCompat
 import androidx.core.graphics.ColorUtils
 import androidx.core.widget.CompoundButtonCompat
 import com.google.android.material.checkbox.MaterialCheckBox
-import com.google.android.material.switchmaterial.SwitchMaterial
 import com.paolovalerdi.chameleon.R
 
 const val ALPHA_FULL = 1.00f
@@ -32,7 +32,7 @@ fun layer(@ColorInt backgroundColor: Int, @ColorInt overlayColor: Int): Int {
     return ColorUtils.compositeColors(overlayColor, backgroundColor)
 }
 
-fun AppCompatSeekBar.applyAccentColor() {
+fun SeekBar.applyAccentColor() {
     val accentColor = ThemeManager(context).accentColor
     thumbTintList = ColorStateList.valueOf(accentColor)
     progressTintList = ColorStateList.valueOf(accentColor)
@@ -60,7 +60,7 @@ fun MaterialCheckBox.applyAccentColor() {
     CompoundButtonCompat.setButtonTintList(this, colorStateList)
 }
 
-fun SwitchMaterial.applyAccentColor() {
+fun SwitchCompat.applyAccentColor() {
     val states = arrayOf(
         intArrayOf(android.R.attr.state_enabled, android.R.attr.state_checked),
         intArrayOf(android.R.attr.state_enabled, -android.R.attr.state_checked),

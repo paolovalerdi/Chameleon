@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <com.paolovalerdi.chameleon.preferences.ChameleonPreferenceCategory
+        android:title="Title"
+        app:iconSpaceReserved="false">
+
+        <com.paolovalerdi.chameleon.preferences.ChameleonColorPreference
+            android:title="Icon preference"
+            app:iconSpaceReserved="false"
+            app:summary="lorem ipsum blablablabla"
+            app:widgetLayout="@layout/preference_color" />
+
+        <com.paolovalerdi.chameleon.preferences.ChameleonSwitchPreference
+            app:defaultValue="true"
+            app:iconSpaceReserved="false"
+            app:summary="Something veryyyyyy looooonggggggg"
+            app:title="Switch preferences" />
+
+        <com.paolovalerdi.chameleon.preferences.ChameleonSeekBarPreference
+            android:max="30"
+            app:defaultValue="15"
+            app:iconSpaceReserved="false"
+            app:min="10"
+            app:showSeekBarValue="true"
+            app:summary="Something veryyyyyy looooonggggggg"
+            app:title="Switch preferences" />
+
+        <com.paolovalerdi.chameleon.preferences.ChameleonColorIconPreference
+            android:title="Icon preference"
+            app:iconColor="?colorError"
+            app:iconRes="@drawable/ic_create_black_24dp"
+            app:summary="Something loooonnngggg" />
+
+    </com.paolovalerdi.chameleon.preferences.ChameleonPreferenceCategory>
+
+</PreferenceScreen>

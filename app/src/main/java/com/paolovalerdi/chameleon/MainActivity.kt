@@ -2,12 +2,19 @@ package com.paolovalerdi.chameleon
 
 import android.graphics.Color
 import android.os.Bundle
+import androidx.preference.PreferenceFragmentCompat
 import com.paolovalerdi.chameleon.base.BaseThemeActivity
 import com.paolovalerdi.chameleon.utils.ThemeKey
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlin.random.Random
 
 class MainActivity : BaseThemeActivity() {
+
+    class ChameleonPreferenceFragment : PreferenceFragmentCompat() {
+        override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
+            setPreferencesFromResource(R.xml.preferences, rootKey)
+        }
+    }
 
     private val colors = listOf(
         "#ff1744", "#651fff", "#2979ff", "#ff9100", "#dd2c00", "#795548"
@@ -40,7 +47,8 @@ class MainActivity : BaseThemeActivity() {
         saturate.setOnCheckedChangeListener { buttonView, isChecked ->
             updateShouldUseDesaturatedColor(isChecked)
         }
-        accent.setBackgroundColor(themeManager.accentColor)
+        supportFragmentManager.beginTransaction()
+            .replace(R.id.preferencesFragment, ChameleonPreferenceFragment()).commit()
     }
 
 }
