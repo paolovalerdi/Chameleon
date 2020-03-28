@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?backgroundColor"
+    tools:context=".MainActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/light"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/light_theme" />
+
+        <Button
+            android:id="@+id/dark"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/dark_theme" />
+
+        <Button
+            android:id="@+id/follow_system"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/follow_system" />
+
+        <androidx.appcompat.widget.SwitchCompat
+            android:id="@+id/amoled"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="amoled" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <View
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_gravity="center"
+                android:layout_margin="8dp"
+                android:background="?backgroundColor" />
+
+            <View
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_gravity="center"
+                android:layout_margin="8dp"
+                android:background="?colorBackgroundFloating" />
+
+            <View
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_gravity="center"
+                android:layout_margin="8dp"
+                android:background="?colorSurface" />
+
+            <View
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_gravity="center"
+                android:layout_margin="8dp"
+                android:background="?android:textColorPrimary" />
+
+            <View
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_gravity="center"
+                android:layout_margin="8dp"
+                android:background="?android:textColorSecondary" />
+
+            <View
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_gravity="center"
+                android:layout_margin="8dp"
+                android:background="?colorError" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <View
+                android:id="@+id/accent"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_gravity="center"
+                android:layout_margin="8dp" />
+
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
