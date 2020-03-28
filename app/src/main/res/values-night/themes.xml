@@ -10,7 +10,7 @@
     <color name="colorError">@color/darkColorError</color>
 
     <style name="Theme.Base.Chameleon.SplashScreenTheme.Amoled" parent="Theme.Base.Chameleon.SplashScreenTheme">
-        <item name="backgroundColor">@color/amoledColorBackground</item>
+        <item name="android:colorBackground">@color/amoledColorBackground</item>
         <item name="colorBackgroundFloating">@color/amoledColorBackgroundFloating</item>
         <item name="colorSurface">@color/amoledColorSurface</item>
         <item name="android:textColorPrimary">@color/amoledPrimaryTextColor</item>
@@ -21,7 +21,7 @@
     </style>
 
     <style name="Theme.Base.Chameleon.Amoled" parent="Theme.Base.Chameleon">
-        <item name="backgroundColor">@color/amoledColorBackground</item>
+        <item name="android:colorBackground">@color/amoledColorBackground</item>
         <item name="colorBackgroundFloating">@color/amoledColorBackgroundFloating</item>
         <item name="colorSurface">@color/amoledColorSurface</item>
         <item name="android:textColorPrimary">@color/amoledPrimaryTextColor</item>

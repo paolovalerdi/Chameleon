@@ -2,7 +2,7 @@
 <resources xmlns:ns1="http://schemas.android.com/tools">
 
     <style name="Theme.Base.Chameleon.SplashScreenTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar" ns1:ignore="NewApi">
-        <item name="backgroundColor">@color/colorBackground</item>
+        <item name="android:colorBackground">@color/colorBackground</item>
         <item name="colorBackgroundFloating">@color/colorBackgroundFloating</item>
         <item name="colorSurface">@color/colorSurface</item>
         <item name="android:textColorPrimary">@color/primaryTextColor</item>
@@ -14,10 +14,11 @@
     </style>
 
     <!-- Custom theme should should have this as parent -->
-    <style name="Theme.Base.Chameleon" parent="Theme.Base.Chameleon.SplashScreenTheme"/>
+    <style name="Theme.Base.Chameleon" parent="Theme.Base.Chameleon.SplashScreenTheme" />
 
     <!-- Should overwrite this here so when amoled switch is turn on it stays light -->
-    <style name="Theme.Base.Chameleon.SplashScreenTheme.Amoled" parent="Theme.Base.Chameleon.SplashScreenTheme"/>
-    <style name="Theme.Base.Chameleon.Amoled" parent="Theme.Base.Chameleon"/>
+    <style name="Theme.Base.Chameleon.SplashScreenTheme.Amoled" parent="Theme.Base.Chameleon.SplashScreenTheme" />
+
+    <style name="Theme.Base.Chameleon.Amoled" parent="Theme.Base.Chameleon" />
 
 </resources>

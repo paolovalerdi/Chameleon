@@ -3,8 +3,7 @@ package com.paolovalerdi.chameleon.utils
 import android.content.Context
 import android.graphics.Color
 import dev.jorgecastillo.androidcolorx.library.isDark
-import dev.jorgecastillo.androidcolorx.library.lighten
-import dev.jorgecastillo.androidcolorx.library.shades
+import dev.jorgecastillo.androidcolorx.library.tints
 
 class ThemeManager(private val context: Context) {
 
@@ -37,9 +36,9 @@ class ThemeManager(private val context: Context) {
     var accentColor: Int
         get() = if (isAccentColorDesaturated && context.getBackgroundColor().isDark()) {
             val color = prefs.getInt(ACCENT_COLOR, Color.parseColor("#2979ff"))
-            val shades = color.shades()
-            if (shades.isNotEmpty() && shades.size >= 4) {
-                color.lighten(0.16f)
+            val shades = color.tints()
+            if (shades.isNotEmpty() && shades.size > 4) {
+                shades[4]
             } else color
         } else prefs.getInt(ACCENT_COLOR, Color.parseColor("#2979ff"))
         set(value) = prefsEditor.putInt(ACCENT_COLOR, value).apply()

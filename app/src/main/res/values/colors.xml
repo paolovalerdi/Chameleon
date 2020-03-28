@@ -25,8 +25,8 @@
 
     <!-- AMOLED theme values -->
     <color name="amoledColorBackground">#000</color>
-    <color name="amoledColorBackgroundFloating">#242424</color>
-    <color name="amoledColorSurface">#212121</color>
+    <color name="amoledColorBackgroundFloating">#131313</color>
+    <color name="amoledColorSurface">#161616</color>
     <color name="amoledPrimaryTextColor">#ffe8eaed</color>
     <color name="amoledSecondaryTextColor">#ff9aa0a6</color>
     <color name="amoledColorAccent">#fff</color>
