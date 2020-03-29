@@ -2,10 +2,10 @@ package com.paolovalerdi.chameleon.widgets
 
 import android.content.Context
 import android.util.AttributeSet
-import androidx.appcompat.widget.AppCompatCheckBox
+import androidx.appcompat.widget.AppCompatRadioButton
 import com.paolovalerdi.chameleon.utils.applyAccentColor
 
-class ChameleonCheckBox : AppCompatCheckBox {
+class ChameleonRadioButton : AppCompatRadioButton {
 
     constructor(context: Context?) : super(context) {
         applyAccentColor()

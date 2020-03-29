@@ -2,14 +2,16 @@ package com.paolovalerdi.chameleon.utils
 
 import android.content.res.ColorStateList
 import android.graphics.Color
+import android.widget.CompoundButton
 import android.widget.SeekBar
 import androidx.annotation.ColorInt
 import androidx.annotation.FloatRange
+import androidx.appcompat.widget.AppCompatCheckBox
+import androidx.appcompat.widget.AppCompatRadioButton
 import androidx.appcompat.widget.SwitchCompat
 import androidx.core.graphics.ColorUtils
 import androidx.core.widget.CompoundButtonCompat
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.google.android.material.checkbox.MaterialCheckBox
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.paolovalerdi.chameleon.R
 import dev.jorgecastillo.androidcolorx.library.isDark
@@ -64,7 +66,7 @@ fun SeekBar.applyAccentColor() {
     progressTintList = ColorStateList.valueOf(accentColor)
 }
 
-fun MaterialCheckBox.applyAccentColor() {
+fun CompoundButton.applyAccentColor() {
     val states = arrayOf(
         intArrayOf(android.R.attr.state_enabled, android.R.attr.state_checked),
         intArrayOf(android.R.attr.state_enabled, -android.R.attr.state_checked),
