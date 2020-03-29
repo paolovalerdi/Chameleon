@@ -5,6 +5,7 @@ import android.os.Bundle
 import androidx.preference.PreferenceFragmentCompat
 import com.paolovalerdi.chameleon.base.BaseThemeActivity
 import com.paolovalerdi.chameleon.utils.ThemeKey
+import com.paolovalerdi.chameleon.utils.applyAccentColor
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlin.random.Random
 
@@ -35,7 +36,7 @@ class MainActivity : BaseThemeActivity() {
             themeManager.currentTheme = ThemeKey.FOLLOW_SYSTEM
             onThemeChanged()
         }
-        accentSwitcher.setOnClickListener {
+        fab.setOnClickListener {
             updateAccentColor(Color.parseColor(colors[Random.nextInt(0, 5)]))
         }
         amoled.isChecked = themeManager.usesAmoledTheme
@@ -47,6 +48,8 @@ class MainActivity : BaseThemeActivity() {
         saturate.setOnCheckedChangeListener { buttonView, isChecked ->
             updateShouldUseDesaturatedColor(isChecked)
         }
+        bottomnavigiation.applyAccentColor()
+        fab.applyAccentColor()
         supportFragmentManager.beginTransaction()
             .replace(R.id.preferencesFragment, ChameleonPreferenceFragment()).commit()
     }

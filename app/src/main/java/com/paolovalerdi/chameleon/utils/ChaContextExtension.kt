@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.res.Configuration
 import androidx.annotation.AttrRes
 import androidx.appcompat.app.AppCompatDelegate
+import com.paolovalerdi.chameleon.R
 
 fun Context.resolveColor(@AttrRes attr: Int, fallback: Int = 0): Int {
     val a = theme.obtainStyledAttributes(intArrayOf(attr))
@@ -15,6 +16,8 @@ fun Context.resolveColor(@AttrRes attr: Int, fallback: Int = 0): Int {
 }
 
 fun Context.getBackgroundColor() = resolveColor(android.R.attr.colorBackground)
+
+fun Context.getColorControlNormal() = resolveColor(R.attr.colorControlNormal)
 
 val Context.currentNightMode: Int
     get() = try {

@@ -7,7 +7,7 @@
     <color name="colorBackgroundFloating">#fff</color>
     <color name="colorSurface">#fff</color>
     <color name="primaryTextColor">#ff202124</color>
-    <color name="secondaryTextColor">#ff5f6368</color>
+    <color name="secondaryTextColor">#B35f6368</color>
     <color name="colorAccent">#000</color>
     <color name="colorPrimary">@color/colorAccent</color>
     <color name="colorError">#ff1744</color>
@@ -18,17 +18,17 @@
     <color name="darkColorBackgroundFloating">#242424</color>
     <color name="darkColorSurface">#212121</color>
     <color name="darkPrimaryTextColor">#ffe8eaed</color>
-    <color name="darkSecondaryTextColor">#ff9aa0a6</color>
+    <color name="darkSecondaryTextColor">#B39aa0a6</color>
     <color name="darkColorAccent">#fff</color>
     <color name="darkPrimaryColor">#fff</color>
     <color name="darkColorError">#ff8a80</color>
 
     <!-- AMOLED theme values -->
     <color name="amoledColorBackground">#000</color>
-    <color name="amoledColorBackgroundFloating">#131313</color>
-    <color name="amoledColorSurface">#161616</color>
+    <color name="amoledColorBackgroundFloating">#161616</color>
+    <color name="amoledColorSurface">#080808</color>
     <color name="amoledPrimaryTextColor">#ffe8eaed</color>
-    <color name="amoledSecondaryTextColor">#ff9aa0a6</color>
+    <color name="amoledSecondaryTextColor">#B39aa0a6</color>
     <color name="amoledColorAccent">#fff</color>
     <color name="amoledPrimaryColor">#fff</color>
     <color name="amoledColorError">#ff8a80</color>

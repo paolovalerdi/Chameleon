@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:title="one"
+        android:icon="@drawable/ic_create_black_24dp"/>
+
+    <item
+        android:title="two"
+        android:icon="@drawable/ic_create_black_24dp"/>
+
+    <item
+        android:title="three"
+        android:icon="@drawable/ic_create_black_24dp"/>
+
+    <item
+        android:title="four"
+        android:icon="@drawable/ic_create_black_24dp"/>
+
+    <item
+        android:title="five"
+        android:icon="@drawable/ic_create_black_24dp"/>
+
+</menu>

@@ -3,6 +3,8 @@
 
     <style name="Theme.Base.Chameleon.SplashScreenTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar" ns1:ignore="NewApi">
         <item name="android:colorBackground">@color/colorBackground</item>
+        <item name="android:statusBarColor">@color/colorBackground</item>
+        <item name="android:navigationBarColor">@color/colorBackground</item>
         <item name="colorBackgroundFloating">@color/colorBackgroundFloating</item>
         <item name="colorSurface">@color/colorSurface</item>
         <item name="android:textColorPrimary">@color/primaryTextColor</item>
@@ -11,6 +13,7 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorError">@color/colorError</item>
         <item name="android:windowActivityTransitions">true</item>
+        <item name="elevationOverlayEnabled">false</item>
     </style>
 
     <!-- Custom theme should should have this as parent -->

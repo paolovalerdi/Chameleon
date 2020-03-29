@@ -8,8 +8,11 @@ import androidx.annotation.FloatRange
 import androidx.appcompat.widget.SwitchCompat
 import androidx.core.graphics.ColorUtils
 import androidx.core.widget.CompoundButtonCompat
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.checkbox.MaterialCheckBox
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.paolovalerdi.chameleon.R
+import dev.jorgecastillo.androidcolorx.library.isDark
 
 const val ALPHA_FULL = 1.00f
 const val ALPHA_MEDIUM = 0.54f
@@ -30,6 +33,29 @@ fun layer(
 
 fun layer(@ColorInt backgroundColor: Int, @ColorInt overlayColor: Int): Int {
     return ColorUtils.compositeColors(overlayColor, backgroundColor)
+}
+
+fun FloatingActionButton.applyAccentColor() {
+    val accentColor = ThemeManager(context).accentColor
+    val iconColor = if (accentColor.isDark()) Color.WHITE else Color.BLACK
+    backgroundTintList = ColorStateList.valueOf(accentColor)
+    drawable?.mutate()?.setTint(iconColor)
+}
+
+fun BottomNavigationView.applyAccentColor() {
+    val color = ColorStateList(
+        arrayOf(
+            intArrayOf(-android.R.attr.state_checked),
+            intArrayOf(android.R.attr.state_checked)
+        ),
+        intArrayOf(
+            context.getColorControlNormal(),
+            ThemeManager(context).accentColor
+        )
+    )
+    itemIconTintList = color
+    itemTextColor = color
+    itemRippleColor = ColorStateList.valueOf(ThemeManager(context).accentColor.withAlpha(0.10f))
 }
 
 fun SeekBar.applyAccentColor() {
@@ -74,9 +100,9 @@ fun SwitchCompat.applyAccentColor() {
         states,
         intArrayOf(
             layer(colorSurface, accentColor, ALPHA_FULL),
-            colorSurface,
+            layer(colorSurface, colorOnSurface, ALPHA_MEDIUM),
             layer(colorSurface, accentColor, ALPHA_DISABLED),
-            colorSurface
+            layer(colorSurface, colorOnSurface, ALPHA_MEDIUM)
         )
     )
     val trackColorSwitchMaterial = ColorStateList(

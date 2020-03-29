@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -7,7 +8,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:layout_margin="16dp"
         android:orientation="vertical">
 
@@ -28,12 +29,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/follow_system" />
-
-        <Button
-            android:id="@+id/accentSwitcher"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Accent" />
 
         <com.paolovalerdi.chameleon.widgets.ChameleonSwitch
             android:id="@+id/amoled"
@@ -84,9 +79,25 @@
         <FrameLayout
             android:id="@+id/preferencesFragment"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1" />
+            android:layout_height="match_parent" />
 
     </LinearLayout>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="72dp"
+        android:src="@drawable/ic_create_black_24dp"
+        app:layout_anchor="@id/bottomnavigiation"
+        app:layout_anchorGravity="top|end" />
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomnavigiation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        app:menu="@menu/navigation" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
