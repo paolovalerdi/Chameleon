@@ -4,7 +4,10 @@ import android.content.Context
 import android.graphics.drawable.Drawable
 import android.graphics.drawable.LayerDrawable
 import android.util.AttributeSet
+import android.widget.ImageView
+import androidx.core.view.updateLayoutParams
 import androidx.preference.Preference
+import androidx.preference.PreferenceViewHolder
 import com.paolovalerdi.chameleon.R
 import com.paolovalerdi.chameleon.utils.desaturate
 import com.paolovalerdi.chameleon.utils.resolveColor
@@ -73,4 +76,14 @@ class ChameleonColorIconPreference : Preference {
         finalIcon.setLayerInset(1, inset, inset, inset, inset)
         return finalIcon
     }
+
+    override fun onBindViewHolder(holder: PreferenceViewHolder?) {
+        super.onBindViewHolder(holder)
+        val image = holder?.itemView?.findViewById<ImageView>(android.R.id.icon)
+        image?.updateLayoutParams {
+            height = holder.itemView.resources?.getDimensionPixelSize(R.dimen.icon_size) ?: 0
+            width = holder.itemView.resources?.getDimensionPixelSize(R.dimen.icon_size) ?: 0
+        }
+    }
+
 }
