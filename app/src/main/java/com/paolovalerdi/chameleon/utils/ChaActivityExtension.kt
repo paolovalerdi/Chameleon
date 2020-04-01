@@ -5,6 +5,10 @@ import android.content.Intent
 
 inline fun Activity.restart(intentBuilder: Intent.() -> Unit = {}) {
     val i = Intent(this, this::class.java)
+    i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+    i.addCategory(Intent.CATEGORY_HOME)
+    i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
+    i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
     intent?.extras?.let { i.putExtras(it) }
     i.intentBuilder()
     startActivity(i)
