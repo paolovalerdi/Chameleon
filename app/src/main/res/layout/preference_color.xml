@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <View xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/colorDrawable"
-    android:layout_width="35dp"
-    android:layout_height="35dp"
+    android:layout_width="48dp"
+    android:layout_height="48dp"
+    android:scaleX="0.5"
+    android:scaleY="0.5"
     android:background="@drawable/preference_icon_color_background"
     android:orientation="vertical" />
