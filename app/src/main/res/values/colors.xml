@@ -7,18 +7,18 @@
     <color name="colorBackgroundFloating">#fff</color>
     <color name="colorSurface">#fff</color>
     <color name="primaryTextColor">#ff202124</color>
-    <color name="secondaryTextColor">#B35f6368</color>
+    <color name="secondaryTextColor">#ff5f6368</color>
     <color name="colorAccent">#000</color>
     <color name="colorPrimary">@color/colorAccent</color>
     <color name="colorError">#ff1744</color>
 
     <!-- Dark theme values -->
     <!-- The overwritten night values point here -->
-    <color name="darkColorBackground">#171717</color>
-    <color name="darkColorBackgroundFloating">#242424</color>
-    <color name="darkColorSurface">#212121</color>
-    <color name="darkPrimaryTextColor">#ffe8eaed</color>
-    <color name="darkSecondaryTextColor">#B39aa0a6</color>
+    <color name="darkColorBackground">#202020</color>
+    <color name="darkColorBackgroundFloating">#313235</color>
+    <color name="darkColorSurface">#313235</color>
+    <color name="darkPrimaryTextColor">#fff</color>
+    <color name="darkSecondaryTextColor">#ffbdc1c6</color>
     <color name="darkColorAccent">#fff</color>
     <color name="darkPrimaryColor">#fff</color>
     <color name="darkColorError">#ff8a80</color>
@@ -26,9 +26,9 @@
     <!-- AMOLED theme values -->
     <color name="amoledColorBackground">#000</color>
     <color name="amoledColorBackgroundFloating">#161616</color>
-    <color name="amoledColorSurface">#080808</color>
-    <color name="amoledPrimaryTextColor">#ffe8eaed</color>
-    <color name="amoledSecondaryTextColor">#B39aa0a6</color>
+    <color name="amoledColorSurface">#000</color>
+    <color name="amoledPrimaryTextColor">#ccffffff</color>
+    <color name="amoledSecondaryTextColor">#8cffffff</color>
     <color name="amoledColorAccent">#fff</color>
     <color name="amoledPrimaryColor">#fff</color>
     <color name="amoledColorError">#ff8a80</color>
