@@ -7,7 +7,7 @@
     <color name="colorBackgroundFloating">#fff</color>
     <color name="colorSurface">#fff</color>
     <color name="primaryTextColor">#ff202124</color>
-    <color name="secondaryTextColor">#ff5f6368</color>
+    <color name="secondaryTextColor">#7D7E80</color>
     <color name="colorAccent">#000</color>
     <color name="colorPrimary">@color/colorAccent</color>
     <color name="colorError">#ff1744</color>
