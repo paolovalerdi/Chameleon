@@ -17,7 +17,13 @@ fun Context.resolveColor(@AttrRes attr: Int, fallback: Int = 0): Int {
 
 fun Context.getBackgroundColor() = resolveColor(android.R.attr.colorBackground)
 
+fun Context.getColorSurface() = resolveColor(R.attr.colorSurface)
+
 fun Context.getColorControlNormal() = resolveColor(R.attr.colorControlNormal)
+
+fun Context.getPrimaryTextColor() = resolveColor(android.R.attr.textColorPrimary)
+
+fun Context.getSecondaryTextColor() = resolveColor(android.R.attr.textColorPrimary)
 
 val Context.currentNightMode: Int
     get() = try {

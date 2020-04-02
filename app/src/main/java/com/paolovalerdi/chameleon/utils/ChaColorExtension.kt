@@ -15,6 +15,13 @@ fun Int.withAlpha(@FloatRange(from = 0.0, to = 1.0) alpha: Float): Int {
     return a + rgb
 }
 
+fun Int.isLight() = isDark().not()
+
+fun getPrimaryTextColor(isDark: Boolean) = if (isDark) Color.WHITE else Color.BLACK
+
+fun getSecondaryTextColor(isDark: Boolean) =
+    if (isDark) Color.WHITE.withAlpha(0.80f) else Color.BLACK.withAlpha(0.80f)
+
 @ColorInt
 fun Int.desaturate(amount: Float, minDesaturation: Float): Int {
     val originalAlpha = Color.alpha(this)
@@ -22,7 +29,7 @@ fun Int.desaturate(amount: Float, minDesaturation: Float): Int {
         return this
     }
     val fixedColor = if (this.isDark()) {
-        lighten(0.10f)
+        lighten(0.08f)
     } else this
     val colorWithFullAlpha = ColorUtils.setAlphaComponent(fixedColor, 255)
     val hsl = FloatArray(3)
