@@ -29,6 +29,7 @@ fun Activity.setNavigationBarColor(@ColorInt color: Int) {
     val fixedColor = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
         color
     } else Color.BLACK
+    window.navigationBarColor = fixedColor
     enableLightNavigationBar(fixedColor.isLight())
 }
 
