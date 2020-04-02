@@ -6,7 +6,10 @@ import androidx.annotation.ColorInt
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import com.paolovalerdi.chameleon.R
-import com.paolovalerdi.chameleon.utils.*
+import com.paolovalerdi.chameleon.utils.ThemeKey
+import com.paolovalerdi.chameleon.utils.ThemeManager
+import com.paolovalerdi.chameleon.utils.actualNightMode
+import com.paolovalerdi.chameleon.utils.currentNightMode
 
 abstract class BaseThemeActivity : AppCompatActivity() {
 
@@ -57,12 +60,10 @@ abstract class BaseThemeActivity : AppCompatActivity() {
     }
 
     fun onThemeChanged() {
-        Handler().post { restart() }
+        Handler().post { recreate() }
     }
 
     private fun setCustomTheme() {
         setTheme(if (themeManager.usesAmoledTheme) amoledTheme else defaultTheme)
     }
-
-
 }
