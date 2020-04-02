@@ -1,17 +1,24 @@
 package com.paolovalerdi.chameleon.utils
 
+import android.animation.ArgbEvaluator
+import android.animation.ObjectAnimator
+import android.annotation.SuppressLint
 import android.content.res.ColorStateList
 import android.graphics.Color
+import android.view.View
+import android.view.animation.Interpolator
+import android.view.animation.PathInterpolator
 import android.widget.CompoundButton
 import android.widget.SeekBar
 import androidx.annotation.ColorInt
 import androidx.annotation.FloatRange
-import androidx.appcompat.widget.AppCompatCheckBox
-import androidx.appcompat.widget.AppCompatRadioButton
+import androidx.appcompat.widget.AppCompatTextView
 import androidx.appcompat.widget.SwitchCompat
+import androidx.core.animation.doOnStart
 import androidx.core.graphics.ColorUtils
 import androidx.core.widget.CompoundButtonCompat
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.android.material.button.MaterialButton
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.paolovalerdi.chameleon.R
 import dev.jorgecastillo.androidcolorx.library.isDark
@@ -21,6 +28,8 @@ const val ALPHA_MEDIUM = 0.54f
 const val ALPHA_DISABLED = 0.38f
 const val ALPHA_LOW = 0.32f
 const val ALPHA_DISABLED_LOW = 0.12f
+
+private const val ANIMATION_DURATION = 250L
 
 fun layer(
     @ColorInt backgroundColor: Int,
@@ -37,36 +46,82 @@ fun layer(@ColorInt backgroundColor: Int, @ColorInt overlayColor: Int): Int {
     return ColorUtils.compositeColors(overlayColor, backgroundColor)
 }
 
-fun FloatingActionButton.applyAccentColor() {
-    val accentColor = ThemeManager(context).accentColor
-    val iconColor = if (accentColor.isDark()) Color.WHITE else Color.BLACK
-    backgroundTintList = ColorStateList.valueOf(accentColor)
-    drawable?.mutate()?.setTint(iconColor)
+fun MaterialButton.applyColor(@ColorInt color: Int, outline: Boolean = false) {
+    if (outline) {
+        strokeColor = ColorStateList.valueOf(color)
+        rippleColor = ColorStateList.valueOf(color)
+        setTextColor(color)
+    } else {
+        val textColor = getPrimaryTextColor(color.isDark())
+        backgroundTintList = ColorStateList.valueOf(color)
+        rippleColor = ColorStateList.valueOf(color)
+        setTextColor(textColor)
+    }
 }
 
-fun BottomNavigationView.applyAccentColor() {
-    val color = ColorStateList(
-        arrayOf(
-            intArrayOf(-android.R.attr.state_checked),
-            intArrayOf(android.R.attr.state_checked)
-        ),
-        intArrayOf(
-            context.getColorControlNormal(),
-            ThemeManager(context).accentColor
-        )
-    )
-    itemIconTintList = color
-    itemTextColor = color
-    itemRippleColor = ColorStateList.valueOf(ThemeManager(context).accentColor.withAlpha(0.10f))
+fun SeekBar.applyColor(@ColorInt color: Int) {
+    thumbTintList = ColorStateList.valueOf(color)
+    progressTintList = ColorStateList.valueOf(color)
 }
 
-fun SeekBar.applyAccentColor() {
-    val accentColor = ThemeManager(context).accentColor
-    thumbTintList = ColorStateList.valueOf(accentColor)
-    progressTintList = ColorStateList.valueOf(accentColor)
+@SuppressLint("ObjectAnimatorBinding")
+fun SeekBar.animateColorChanging(@ColorInt from: Int, @ColorInt to: Int) {
+    ObjectAnimator.ofArgb(this, "thumbTint", from, to).apply {
+        duration = ANIMATION_DURATION
+        setEvaluator(ArgbEvaluator())
+        interpolator = PathInterpolator(0.4f, 0f, 1f, 1f)
+        addUpdateListener { animation ->
+            val animatedValue = animation.animatedValue as Int
+            applyColor(animatedValue)
+        }
+    }.start()
 }
 
-fun CompoundButton.applyAccentColor() {
+@SuppressLint("ObjectAnimatorBinding")
+fun FloatingActionButton.colorTransition(@ColorInt from: Int, @ColorInt to: Int) {
+    ObjectAnimator.ofArgb(this, "backgroundTintList", from, to).apply {
+        duration = ANIMATION_DURATION
+        setEvaluator(ArgbEvaluator())
+        interpolator = PathInterpolator(0.4f, 0f, 1f, 1f)
+        addUpdateListener { animation ->
+            val animatedValue = animation.animatedValue as Int
+            backgroundTintList = ColorStateList.valueOf(animatedValue)
+        }
+        doOnStart {
+            drawable?.run {
+                setColorFilter(getPrimaryTextColor(to.isDark()))
+            }
+        }
+    }.start()
+}
+
+fun AppCompatTextView.colorTransition(@ColorInt from: Int, @ColorInt to: Int) {
+    ObjectAnimator.ofArgb(this, "textColor", from, to).apply {
+        duration = ANIMATION_DURATION
+        interpolator = PathInterpolator(0.4f, 0f, 1f, 1f)
+    }.start()
+}
+
+fun View.backgroundColorTransition(
+    @ColorInt from: Int,
+    @ColorInt to: Int,
+    animInterpolator: Interpolator = PathInterpolator(0.4f, 0f, 1f, 1f)
+) {
+    ObjectAnimator.ofArgb(this, "backgroundColor", from, to).apply {
+        duration = ANIMATION_DURATION
+        interpolator = animInterpolator
+    }.start()
+}
+
+internal fun SeekBar.applyAccentColor() {
+    applyColor(ThemeManager(context).accentColor)
+}
+
+internal fun MaterialButton.applyAccentColor() {
+    applyColor(ThemeManager(context).accentColor)
+}
+
+internal fun CompoundButton.applyAccentColor() {
     val states = arrayOf(
         intArrayOf(android.R.attr.state_enabled, android.R.attr.state_checked),
         intArrayOf(android.R.attr.state_enabled, -android.R.attr.state_checked),
@@ -88,7 +143,31 @@ fun CompoundButton.applyAccentColor() {
     CompoundButtonCompat.setButtonTintList(this, colorStateList)
 }
 
-fun SwitchCompat.applyAccentColor() {
+internal fun FloatingActionButton.applyAccentColor() {
+    val accentColor = ThemeManager(context).accentColor
+    val iconColor = if (accentColor.isDark()) Color.WHITE else Color.BLACK
+    backgroundTintList = ColorStateList.valueOf(accentColor)
+    setRippleColor(ColorStateList.valueOf(accentColor))
+    drawable?.mutate()?.setTint(iconColor)
+}
+
+internal fun BottomNavigationView.applyAccentColor() {
+    val color = ColorStateList(
+        arrayOf(
+            intArrayOf(-android.R.attr.state_checked),
+            intArrayOf(android.R.attr.state_checked)
+        ),
+        intArrayOf(
+            context.getColorControlNormal(),
+            ThemeManager(context).accentColor
+        )
+    )
+    itemIconTintList = color
+    itemTextColor = color
+    itemRippleColor = ColorStateList.valueOf(ThemeManager(context).accentColor.withAlpha(0.10f))
+}
+
+internal fun SwitchCompat.applyAccentColor() {
     val states = arrayOf(
         intArrayOf(android.R.attr.state_enabled, android.R.attr.state_checked),
         intArrayOf(android.R.attr.state_enabled, -android.R.attr.state_checked),
