@@ -20,7 +20,7 @@ fun Int.isLight() = isDark().not()
 fun getPrimaryTextColor(isDark: Boolean) = if (isDark) Color.WHITE else Color.BLACK
 
 fun getSecondaryTextColor(isDark: Boolean) =
-    if (isDark) Color.WHITE.withAlpha(0.80f) else Color.BLACK.withAlpha(0.80f)
+    if (isDark) Color.WHITE.withAlpha(ALPHA_MEDIUM) else Color.BLACK.withAlpha(ALPHA_MEDIUM)
 
 @ColorInt
 fun Int.desaturate(amount: Float, minDesaturation: Float): Int {
