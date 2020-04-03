@@ -3,7 +3,7 @@
     android:id="@+id/colorDrawable"
     android:layout_width="48dp"
     android:layout_height="48dp"
-    android:scaleX="0.7"
-    android:scaleY="0.7"
+    android:scaleX="0.65"
+    android:scaleY="0.65"
     android:background="@drawable/preference_icon_color_background"
     android:orientation="vertical" />

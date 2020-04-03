@@ -65,7 +65,7 @@ fun SeekBar.applyColor(@ColorInt color: Int) {
 }
 
 @SuppressLint("ObjectAnimatorBinding")
-fun SeekBar.animateColorChanging(@ColorInt from: Int, @ColorInt to: Int) {
+fun SeekBar.colorTransition(@ColorInt from: Int, @ColorInt to: Int) {
     ObjectAnimator.ofArgb(this, "thumbTint", from, to).apply {
         duration = ANIMATION_DURATION
         setEvaluator(ArgbEvaluator())
