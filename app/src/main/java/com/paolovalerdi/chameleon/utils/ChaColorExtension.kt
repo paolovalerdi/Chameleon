@@ -28,10 +28,7 @@ fun Int.desaturate(amount: Float, minDesaturation: Float): Int {
     if (this == Color.TRANSPARENT || originalAlpha == 0) {
         return this
     }
-    val fixedColor = if (this.isDark()) {
-        lighten(0.08f)
-    } else this
-    val colorWithFullAlpha = ColorUtils.setAlphaComponent(fixedColor, 255)
+    val colorWithFullAlpha = ColorUtils.setAlphaComponent(this, 255)
     val hsl = FloatArray(3)
     ColorUtils.colorToHSL(colorWithFullAlpha, hsl)
     if (hsl[1] > minDesaturation) {

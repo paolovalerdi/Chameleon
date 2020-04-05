@@ -36,7 +36,7 @@ class ThemeManager(private val context: Context) {
     var accentColor: Int
         get() = if (isAccentColorDesaturated && context.getBackgroundColor().isDark()) {
             val color = prefs.getInt(ACCENT_COLOR, Color.parseColor("#2979ff"))
-            color.desaturate(0.40f, 0.2f).lighten(.10f)
+            color.desaturate(0.35f, 0.65f).lighten(.12f)
         } else prefs.getInt(ACCENT_COLOR, Color.parseColor("#2979ff"))
         set(value) = prefsEditor.putInt(ACCENT_COLOR, value).apply()
 
