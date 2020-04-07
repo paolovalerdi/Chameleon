@@ -20,6 +20,7 @@ import androidx.core.widget.CompoundButtonCompat
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.google.android.material.textfield.TextInputLayout
 import com.paolovalerdi.chameleon.R
 import dev.jorgecastillo.androidcolorx.library.isDark
 
@@ -119,6 +120,22 @@ internal fun SeekBar.applyAccentColor() {
 
 internal fun MaterialButton.applyAccentColor() {
     applyColor(ThemeManager(context).accentColor)
+}
+
+internal fun TextInputLayout.applyAccentColor() {
+    val accentColor = ThemeManager(context).accentColor
+    val states = arrayOf(
+        intArrayOf(android.R.attr.state_enabled, android.R.attr.state_focused),
+        intArrayOf(android.R.attr.state_enabled, -android.R.attr.state_focused)
+    )
+    boxStrokeColor = accentColor
+    hintTextColor = ColorStateList(
+        states,
+        intArrayOf(
+            accentColor,
+            context.resolveColor(R.attr.colorOnSurface)
+        )
+    )
 }
 
 internal fun CompoundButton.applyAccentColor() {
