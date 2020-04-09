@@ -17,7 +17,7 @@ fun Int.withAlpha(@FloatRange(from = 0.0, to = 1.0) alpha: Float): Int {
 
 fun Int.isLight() = isDark().not()
 
-fun getPrimaryTextColor(isDark: Boolean) = if (isDark) Color.WHITE else Color.BLACK
+fun getPrimaryTextColor(isDark: Boolean) = if (isDark) Color.WHITE.withAlpha(0.80f) else Color.BLACK.withAlpha(0.80f)
 
 fun getSecondaryTextColor(isDark: Boolean) =
     if (isDark) Color.WHITE.withAlpha(ALPHA_MEDIUM) else Color.BLACK.withAlpha(ALPHA_MEDIUM)
