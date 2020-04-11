@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <bool name="isLightNavigationEnabled">false</bool>
     <color name="colorBackground">@color/darkColorBackground</color>
     <color name="colorBackgroundFloating">@color/darkColorBackgroundFloating</color>
     <color name="colorSurface">@color/darkColorSurface</color>
@@ -13,17 +15,12 @@
         <item name="android:colorBackground">@color/amoledColorBackground</item>
         <item name="android:statusBarColor">@color/amoledColorBackground</item>
         <item name="android:navigationBarColor">@color/amoledColorBackground</item>
-        <item name="colorBackgroundFloating">@color/amoledColorBackgroundFloating</item>
-        <item name="colorSurface">@color/amoledColorSurface</item>
-        <item name="android:textColorPrimary">@color/amoledPrimaryTextColor</item>
-        <item name="android:textColorSecondary">@color/amoledSecondaryTextColor</item>
-        <item name="colorAccent">@color/amoledColorAccent</item>
-        <item name="colorPrimary">@color/amoledPrimaryColor</item>
-        <item name="colorError">@color/amoledColorError</item>
-    </style>
-
-    <style name="Theme.Base.Chameleon.Amoled" parent="Theme.Base.Chameleon">
-        <item name="android:colorBackground">@color/amoledColorBackground</item>
+        <item name="android:windowLightNavigationBar" tools:targetApi="o_mr1">
+            @bool/isLightNavigationEnabled
+        </item>
+        <item name="android:windowLightStatusBar" tools:targetApi="m">
+            @bool/isLightNavigationEnabled
+        </item>
         <item name="colorBackgroundFloating">@color/amoledColorBackgroundFloating</item>
         <item name="colorSurface">@color/amoledColorSurface</item>
         <item name="android:textColorPrimary">@color/amoledPrimaryTextColor</item>

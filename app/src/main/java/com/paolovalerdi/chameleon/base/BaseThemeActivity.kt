@@ -18,8 +18,8 @@ abstract class BaseThemeActivity : AppCompatActivity() {
     private var _themeManager: ThemeManager? = null
     val themeManager get() = _themeManager!!
 
-    open val defaultTheme = R.style.Theme_Base_Chameleon
-    open val amoledTheme = R.style.Theme_Base_Chameleon_Amoled
+    open val defaultTheme = R.style.Theme_Base_Chameleon_SplashScreenTheme
+    open val amoledTheme = R.style.Theme_Base_Chameleon_SplashScreenTheme_Amoled
 
     override fun onCreate(savedInstanceState: Bundle?) {
         _themeManager = ThemeManager(this)
