@@ -14,8 +14,8 @@
 
     <!-- Dark theme values -->
     <!-- The overwritten night values point here -->
-    <color name="darkColorBackground">#121212</color>
-    <color name="darkColorBackgroundFloating">#212121</color>
+    <color name="darkColorBackground">#141414</color>
+    <color name="darkColorBackgroundFloating">#222222</color>
     <color name="darkColorSurface">@color/darkColorBackgroundFloating</color>
     <color name="darkPrimaryTextColor">#fff</color>
     <color name="darkSecondaryTextColor">#ffbdc1c6</color>
@@ -25,8 +25,8 @@
 
     <!-- AMOLED theme values -->
     <color name="amoledColorBackground">#000</color>
-    <color name="amoledColorBackgroundFloating">#171717</color>
-    <color name="amoledColorSurface">@color/colorBackground</color>
+    <color name="amoledColorBackgroundFloating">#181818</color>
+    <color name="amoledColorSurface">@color/amoledColorBackground</color>
     <color name="amoledPrimaryTextColor">#ccffffff</color>
     <color name="amoledSecondaryTextColor">#8cffffff</color>
     <color name="amoledColorAccent">#fff</color>
