@@ -6,7 +6,6 @@ import androidx.annotation.FloatRange
 import androidx.core.graphics.ColorUtils
 import androidx.core.math.MathUtils.clamp
 import dev.jorgecastillo.androidcolorx.library.isDark
-import dev.jorgecastillo.androidcolorx.library.lighten
 
 @ColorInt
 fun Int.withAlpha(@FloatRange(from = 0.0, to = 1.0) alpha: Float): Int {
@@ -17,10 +16,11 @@ fun Int.withAlpha(@FloatRange(from = 0.0, to = 1.0) alpha: Float): Int {
 
 fun Int.isLight() = isDark().not()
 
-fun getPrimaryTextColor(isDark: Boolean) = if (isDark) Color.WHITE.withAlpha(0.80f) else Color.BLACK.withAlpha(0.80f)
+fun getPrimaryTextColor(isDark: Boolean) =
+    if (isDark) Color.WHITE.withAlpha(0.89f) else Color.BLACK.withAlpha(0.89f)
 
 fun getSecondaryTextColor(isDark: Boolean) =
-    if (isDark) Color.WHITE.withAlpha(ALPHA_MEDIUM) else Color.BLACK.withAlpha(ALPHA_MEDIUM)
+    if (isDark) Color.WHITE.withAlpha(0.65f) else Color.BLACK.withAlpha(0.65f)
 
 @ColorInt
 fun Int.desaturate(amount: Float, minDesaturation: Float): Int {
