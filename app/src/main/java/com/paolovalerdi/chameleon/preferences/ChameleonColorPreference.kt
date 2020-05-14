@@ -8,28 +8,17 @@ import androidx.preference.PreferenceViewHolder
 import com.paolovalerdi.chameleon.R
 import com.paolovalerdi.chameleon.utils.ThemeManager
 
-class ChameleonColorPreference : Preference {
+class ChameleonColorPreference(
+    context: Context? = null,
+    attrs: AttributeSet? = null,
+    defStyleAttr: Int = 0,
+    defStyleRes: Int = 0
+) :
+    Preference(context, attrs, defStyleAttr, defStyleRes) {
 
-    constructor(
-        context: Context?, attrs: AttributeSet?, defStyleAttr: Int, defStyleRes: Int
-    ) : super(context, attrs, defStyleAttr, defStyleRes) {
+    init {
         widgetLayoutResource = R.layout.preference_color
     }
-
-    constructor(context: Context?, attrs: AttributeSet?, defStyleAttr: Int) : super(
-        context, attrs, defStyleAttr
-    ) {
-        widgetLayoutResource = R.layout.preference_color
-    }
-
-    constructor(context: Context?, attrs: AttributeSet?) : super(context, attrs) {
-        widgetLayoutResource = R.layout.preference_color
-    }
-
-    constructor(context: Context?) : super(context) {
-        widgetLayoutResource = R.layout.preference_color
-    }
-
 
     override fun onBindViewHolder(holder: PreferenceViewHolder?) {
         super.onBindViewHolder(holder)
@@ -38,5 +27,4 @@ class ChameleonColorPreference : Preference {
             colorView?.background?.mutate()?.setTint(ThemeManager(it.itemView.context).accentColor)
         }
     }
-
 }

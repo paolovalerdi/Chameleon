@@ -14,26 +14,11 @@ import com.paolovalerdi.chameleon.utils.resolveColor
 import dev.jorgecastillo.androidcolorx.library.isDark
 import dev.jorgecastillo.androidcolorx.library.lighten
 
-class ChameleonColorIconPreference : Preference {
-
-    constructor(
-        context: Context?, attrs: AttributeSet?, defStyleAttr: Int, defStyleRes: Int
-    ) : super(context, attrs, defStyleAttr, defStyleRes) {
+class ChameleonColorIconPreference @JvmOverloads constructor(
+    context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0, defStyleRes: Int = 0
+) : Preference(context, attrs, defStyleAttr, defStyleRes) {
+    init {
         obtainStyles(context, attrs)
-    }
-
-    constructor(context: Context?, attrs: AttributeSet?, defStyleAttr: Int) : super(
-        context, attrs, defStyleAttr
-    ) {
-        obtainStyles(context, attrs)
-    }
-
-    constructor(context: Context?, attrs: AttributeSet?) : super(context, attrs) {
-        obtainStyles(context, attrs)
-    }
-
-    constructor(context: Context?) : super(context) {
-        obtainStyles(context, null)
     }
 
     fun tintIcon(color: Int) {
