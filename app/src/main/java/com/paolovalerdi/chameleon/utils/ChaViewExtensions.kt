@@ -4,6 +4,8 @@ import android.animation.ArgbEvaluator
 import android.animation.ObjectAnimator
 import android.annotation.SuppressLint
 import android.content.res.ColorStateList
+import android.graphics.BlendMode
+import android.graphics.BlendModeColorFilter
 import android.graphics.Color
 import android.view.View
 import android.view.animation.Interpolator
@@ -89,9 +91,8 @@ fun FloatingActionButton.colorTransition(@ColorInt from: Int, @ColorInt to: Int)
             backgroundTintList = ColorStateList.valueOf(animatedValue)
         }
         doOnEnd {
-            val newDrawable = drawable?.mutate()
-            newDrawable?.setTint(getPrimaryTextColor(to.isDark()))
-            setImageDrawable(newDrawable)
+            drawable?.colorFilter =
+                BlendModeColorFilter(getPrimaryTextColor(to.isDark()), BlendMode.SRC_IN)
         }
     }.start()
 }
