@@ -6,9 +6,9 @@ import android.util.AttributeSet
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.paolovalerdi.chameleon.utils.applyAccentColor
 
-class ChameleonFloatingActionButton : FloatingActionButton {
+open class ChameleonFloatingActionButton : FloatingActionButton {
 
-    private var lastTintColor = Color.WHITE
+    protected var lastTintColor = Color.WHITE
 
     constructor(context: Context) : super(context) {
         applyAccentColor()
