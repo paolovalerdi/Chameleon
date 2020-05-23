@@ -14,7 +14,7 @@ import androidx.annotation.ColorInt
 import androidx.annotation.FloatRange
 import androidx.appcompat.widget.AppCompatTextView
 import androidx.appcompat.widget.SwitchCompat
-import androidx.core.animation.doOnStart
+import androidx.core.animation.doOnEnd
 import androidx.core.graphics.ColorUtils
 import androidx.core.widget.CompoundButtonCompat
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -88,10 +88,10 @@ fun FloatingActionButton.colorTransition(@ColorInt from: Int, @ColorInt to: Int)
             val animatedValue = animation.animatedValue as Int
             backgroundTintList = ColorStateList.valueOf(animatedValue)
         }
-        doOnStart {
-            drawable?.run {
-                setColorFilter(getPrimaryTextColor(to.isDark()))
-            }
+        doOnEnd {
+            val newDrawable = drawable?.mutate()
+            newDrawable?.setTint(getPrimaryTextColor(to.isDark()))
+            setImageDrawable(newDrawable)
         }
     }.start()
 }
