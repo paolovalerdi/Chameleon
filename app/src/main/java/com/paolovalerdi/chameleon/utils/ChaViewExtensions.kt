@@ -4,8 +4,6 @@ import android.animation.ArgbEvaluator
 import android.animation.ObjectAnimator
 import android.annotation.SuppressLint
 import android.content.res.ColorStateList
-import android.graphics.BlendMode
-import android.graphics.BlendModeColorFilter
 import android.graphics.Color
 import android.view.View
 import android.view.animation.Interpolator
@@ -16,7 +14,7 @@ import androidx.annotation.ColorInt
 import androidx.annotation.FloatRange
 import androidx.appcompat.widget.AppCompatTextView
 import androidx.appcompat.widget.SwitchCompat
-import androidx.core.animation.doOnEnd
+import androidx.core.animation.doOnStart
 import androidx.core.graphics.ColorUtils
 import androidx.core.widget.CompoundButtonCompat
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -24,6 +22,7 @@ import com.google.android.material.button.MaterialButton
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.textfield.TextInputLayout
 import com.paolovalerdi.chameleon.R
+import com.paolovalerdi.chameleon.widgets.ChameleonFloatingActionButton
 import dev.jorgecastillo.androidcolorx.library.isDark
 
 const val ALPHA_FULL = 1.00f
@@ -90,9 +89,24 @@ fun FloatingActionButton.colorTransition(@ColorInt from: Int, @ColorInt to: Int)
             val animatedValue = animation.animatedValue as Int
             backgroundTintList = ColorStateList.valueOf(animatedValue)
         }
-        doOnEnd {
-            drawable?.colorFilter =
-                BlendModeColorFilter(getPrimaryTextColor(to.isDark()), BlendMode.SRC_IN)
+        doOnStart {
+            drawable?.setTint(getPrimaryTextColor(to.isDark()))
+        }
+    }.start()
+}
+
+@SuppressLint("ObjectAnimatorBinding")
+fun ChameleonFloatingActionButton.safeColorTransition(@ColorInt from: Int, @ColorInt to: Int) {
+    ObjectAnimator.ofArgb(this, "backgroundTintList", from, to).apply {
+        duration = ANIMATION_DURATION
+        setEvaluator(ArgbEvaluator())
+        interpolator = PathInterpolator(0.4f, 0f, 1f, 1f)
+        addUpdateListener { animation ->
+            val animatedValue = animation.animatedValue as Int
+            backgroundTintList = ColorStateList.valueOf(animatedValue)
+        }
+        doOnStart {
+            updateTint(getPrimaryTextColor(to.isDark()))
         }
     }.start()
 }
