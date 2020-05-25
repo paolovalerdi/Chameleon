@@ -3,35 +3,28 @@
 
     <!-- Light theme values -->
     <!-- This should be overwritten on the <night> resources -->
-    <color name="colorBackground">#fff</color>
-    <color name="colorBackgroundFloating">#fff</color>
     <color name="colorSurface">#fff</color>
+    <color name="colorBackgroundFloating">#fff</color>
     <color name="primaryTextColor">#ff202124</color>
     <color name="secondaryTextColor">#7D7E80</color>
     <color name="colorAccent">#000</color>
-    <color name="colorPrimary">@color/colorAccent</color>
     <color name="colorError">#ff1744</color>
 
     <!-- Dark theme values -->
     <!-- The overwritten night values point here -->
-    <color name="darkColorBackground">#141414</color>
-    <color name="darkColorBackgroundFloating">#222222</color>
-    <color name="darkColorSurface">@color/darkColorBackgroundFloating</color>
+    <color name="darkColorSurface">#121212</color>
+    <color name="darkColorBackgroundFloating">#282828</color>
     <color name="darkPrimaryTextColor">#fff</color>
     <color name="darkSecondaryTextColor">#ffbdc1c6</color>
+
     <color name="darkColorAccent">#fff</color>
-    <color name="darkPrimaryColor">#fff</color>
     <color name="darkColorError">#ff8a80</color>
 
     <!-- AMOLED theme values -->
-    <color name="amoledColorBackground">#000</color>
-    <color name="amoledColorBackgroundFloating">#181818</color>
-    <color name="amoledColorSurface">@color/amoledColorBackground</color>
+    <color name="amoledColorSurface">@android:color/black</color>
+    <color name="amoledColorBackgroundFloating">#191919</color>
     <color name="amoledPrimaryTextColor">#ccffffff</color>
     <color name="amoledSecondaryTextColor">#8cffffff</color>
-    <color name="amoledColorAccent">#fff</color>
-    <color name="amoledPrimaryColor">#fff</color>
-    <color name="amoledColorError">#ff8a80</color>
 
 
 </resources>

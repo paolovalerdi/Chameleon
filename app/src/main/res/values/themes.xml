@@ -2,29 +2,35 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
 
     <bool name="isLightNavigationEnabled">true</bool>
+    <bool name="shouldUseElevationOverlays">false</bool>
 
     <style name="Theme.Base.Chameleon.SplashScreenTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar">
-        <item name="android:windowBackground">@color/colorBackground</item>
-        <item name="android:colorBackground">@color/colorBackground</item>
-        <item name="android:statusBarColor">@color/colorBackground</item>
+        <item name="android:windowBackground">@color/colorSurface</item>
+        <item name="android:colorBackground">@color/colorSurface</item>
+        <item name="android:statusBarColor">@color/colorSurface</item>
+        <item name="android:navigationBarColor">@color/colorSurface</item>
+
         <item name="android:windowLightNavigationBar" tools:targetApi="o_mr1">
             @bool/isLightNavigationEnabled
         </item>
         <item name="android:windowLightStatusBar" tools:targetApi="m">
             @bool/isLightNavigationEnabled
         </item>
-        <item name="android:navigationBarColor">@color/colorBackground</item>
+
         <item name="colorBackgroundFloating">@color/colorBackgroundFloating</item>
         <item name="colorSurface">@color/colorSurface</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="colorPrimary">@color/colorAccent</item>
+        <item name="colorError">@color/colorError</item>
+        <item name="elevationOverlayEnabled">@bool/shouldUseElevationOverlays</item>
+
         <item name="android:textColorPrimary">@color/primaryTextColor</item>
         <item name="android:textColorSecondary">@color/secondaryTextColor</item>
-        <item name="colorAccent">@color/colorAccent</item>
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorError">@color/colorError</item>
-        <item name="elevationOverlayEnabled">false</item>
     </style>
 
     <!-- Should overwrite this here so when amoled switch is turn on it stays light -->
-    <style name="Theme.Base.Chameleon.SplashScreenTheme.Amoled" parent="Theme.Base.Chameleon.SplashScreenTheme" />
+    <style name="Theme.Base.Chameleon.SplashScreenTheme.Amoled" parent="Theme.Base.Chameleon.SplashScreenTheme">
+        <item name="elevationOverlayEnabled">false</item>
+    </style>
 
 </resources>
