@@ -1,14 +1,14 @@
 package com.paolovalerdi.chameleon.widgets
 
 import android.content.Context
-import android.graphics.Color
 import android.util.AttributeSet
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.paolovalerdi.chameleon.utils.applyAccentColor
+import com.paolovalerdi.chameleon.utils.getPrimaryTextColor
+import com.paolovalerdi.chameleon.utils.isLight
+import dev.jorgecastillo.androidcolorx.library.isDark
 
 open class ChameleonFloatingActionButton : FloatingActionButton {
-
-    protected var lastTintColor = Color.WHITE
 
     constructor(context: Context) : super(context) {
         applyAccentColor()
@@ -24,8 +24,7 @@ open class ChameleonFloatingActionButton : FloatingActionButton {
         applyAccentColor()
     }
 
-    fun updateTint(color: Int) {
-        drawable?.setTint(color)
-        lastTintColor = color
+    open fun updateTintFor(color: Int) {
+        drawable?.setTint(getPrimaryTextColor(color.isDark()))
     }
 }

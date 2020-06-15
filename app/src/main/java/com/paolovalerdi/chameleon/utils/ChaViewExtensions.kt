@@ -14,7 +14,6 @@ import androidx.annotation.ColorInt
 import androidx.annotation.FloatRange
 import androidx.appcompat.widget.AppCompatTextView
 import androidx.appcompat.widget.SwitchCompat
-import androidx.core.animation.doOnStart
 import androidx.core.graphics.ColorUtils
 import androidx.core.widget.CompoundButtonCompat
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -66,67 +65,101 @@ fun SeekBar.applyColor(@ColorInt color: Int) {
     progressTintList = ColorStateList.valueOf(color)
 }
 
-@SuppressLint("ObjectAnimatorBinding")
-fun SeekBar.colorTransition(@ColorInt from: Int, @ColorInt to: Int) {
-    ObjectAnimator.ofArgb(this, "thumbTint", from, to).apply {
-        duration = ANIMATION_DURATION
-        setEvaluator(ArgbEvaluator())
-        interpolator = PathInterpolator(0.4f, 0f, 1f, 1f)
-        addUpdateListener { animation ->
-            val animatedValue = animation.animatedValue as Int
-            applyColor(animatedValue)
-        }
-    }.start()
+fun FloatingActionButton.applyColor(@ColorInt color: Int, tintDrawable: Boolean = true) {
+    val foregroundColor = if (color.isLight()) Color.BLACK else Color.WHITE
+    backgroundTintList = ColorStateList.valueOf(color)
+    setRippleColor(ColorStateList.valueOf(foregroundColor.withAlpha(.2f)))
+    drawable?.mutate()?.setTint(foregroundColor)
 }
 
 @SuppressLint("ObjectAnimatorBinding")
-fun FloatingActionButton.colorTransition(@ColorInt from: Int, @ColorInt to: Int) {
-    ObjectAnimator.ofArgb(this, "backgroundTintList", from, to).apply {
-        duration = ANIMATION_DURATION
-        setEvaluator(ArgbEvaluator())
-        interpolator = PathInterpolator(0.4f, 0f, 1f, 1f)
-        addUpdateListener { animation ->
-            val animatedValue = animation.animatedValue as Int
-            backgroundTintList = ColorStateList.valueOf(animatedValue)
-        }
-        doOnStart {
-            drawable?.setTint(getPrimaryTextColor(to.isDark()))
-        }
-    }.start()
+fun SeekBar.colorTransition(@ColorInt from: Int, @ColorInt to: Int, animate: Boolean = true) {
+    if (animate) {
+        ObjectAnimator.ofArgb(this, "thumbTint", from, to).apply {
+            duration = ANIMATION_DURATION
+            setEvaluator(ArgbEvaluator())
+            interpolator = PathInterpolator(0.4f, 0f, 1f, 1f)
+            addUpdateListener { animation ->
+                val animatedValue = animation.animatedValue as Int
+                applyColor(animatedValue)
+            }
+        }.start()
+    } else {
+        applyColor(to)
+    }
 }
 
 @SuppressLint("ObjectAnimatorBinding")
-fun ChameleonFloatingActionButton.safeColorTransition(@ColorInt from: Int, @ColorInt to: Int) {
-    ObjectAnimator.ofArgb(this, "backgroundTintList", from, to).apply {
-        duration = ANIMATION_DURATION
-        setEvaluator(ArgbEvaluator())
-        interpolator = PathInterpolator(0.4f, 0f, 1f, 1f)
-        addUpdateListener { animation ->
-            val animatedValue = animation.animatedValue as Int
-            backgroundTintList = ColorStateList.valueOf(animatedValue)
-        }
-        doOnStart {
-            updateTint(getPrimaryTextColor(to.isDark()))
-        }
-    }.start()
+fun FloatingActionButton.colorTransition(
+    @ColorInt from: Int, @ColorInt to: Int, animate: Boolean = true
+) {
+    if (animate) {
+        ObjectAnimator.ofArgb(this, "backgroundTintList", from, to).apply {
+            duration = ANIMATION_DURATION
+            setEvaluator(ArgbEvaluator())
+            interpolator = PathInterpolator(0.4f, 0f, 1f, 1f)
+            addUpdateListener { animation ->
+                val animatedValue = animation.animatedValue as Int
+                applyColor(animatedValue)
+            }
+        }.start()
+    } else {
+        applyColor(to)
+    }
 }
 
-fun AppCompatTextView.colorTransition(@ColorInt from: Int, @ColorInt to: Int) {
-    ObjectAnimator.ofArgb(this, "textColor", from, to).apply {
-        duration = ANIMATION_DURATION
-        interpolator = PathInterpolator(0.4f, 0f, 1f, 1f)
-    }.start()
+@SuppressLint("ObjectAnimatorBinding")
+fun ChameleonFloatingActionButton.safeColorTransition(
+    @ColorInt from: Int,
+    @ColorInt to: Int,
+    animate: Boolean = true
+) {
+    if (animate) {
+        ObjectAnimator.ofArgb(this, "backgroundTintList", from, to).apply {
+            duration = ANIMATION_DURATION
+            setEvaluator(ArgbEvaluator())
+            interpolator = PathInterpolator(0.4f, 0f, 1f, 1f)
+            addUpdateListener { animation ->
+                val animatedValue = animation.animatedValue as Int
+                applyColor(animatedValue, false)
+                updateTintFor(animatedValue)
+            }
+        }.start()
+    } else {
+        applyColor(to, false)
+        updateTintFor(to)
+    }
+}
+
+fun AppCompatTextView.colorTransition(
+    @ColorInt from: Int,
+    @ColorInt to: Int,
+    animate: Boolean = true
+) {
+    if (animate) {
+        ObjectAnimator.ofArgb(this, "textColor", from, to).apply {
+            duration = ANIMATION_DURATION
+            interpolator = PathInterpolator(0.4f, 0f, 1f, 1f)
+        }.start()
+    } else {
+        setTextColor(to)
+    }
 }
 
 fun View.backgroundColorTransition(
     @ColorInt from: Int,
     @ColorInt to: Int,
-    animInterpolator: Interpolator = PathInterpolator(0.4f, 0f, 1f, 1f)
+    animInterpolator: Interpolator = PathInterpolator(0.4f, 0f, 1f, 1f),
+    animate: Boolean = true
 ) {
-    ObjectAnimator.ofArgb(this, "backgroundColor", from, to).apply {
-        duration = ANIMATION_DURATION
-        interpolator = animInterpolator
-    }.start()
+    if (animate) {
+        ObjectAnimator.ofArgb(this, "backgroundColor", from, to).apply {
+            duration = ANIMATION_DURATION
+            interpolator = animInterpolator
+        }.start()
+    } else {
+        setBackgroundColor(to)
+    }
 }
 
 internal fun SeekBar.applyAccentColor() {
