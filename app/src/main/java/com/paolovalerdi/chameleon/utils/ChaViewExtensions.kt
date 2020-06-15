@@ -69,7 +69,9 @@ fun FloatingActionButton.applyColor(@ColorInt color: Int, tintDrawable: Boolean 
     val foregroundColor = if (color.isLight()) Color.BLACK else Color.WHITE
     backgroundTintList = ColorStateList.valueOf(color)
     setRippleColor(ColorStateList.valueOf(foregroundColor.withAlpha(.2f)))
-    drawable?.mutate()?.setTint(foregroundColor)
+    if (tintDrawable) {
+        drawable?.mutate()?.setTint(foregroundColor)
+    }
 }
 
 @SuppressLint("ObjectAnimatorBinding")
